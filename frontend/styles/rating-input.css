@@ -1,0 +1,79 @@
+:root {
+  --star-filled: #fdce71;
+  --star-empty: #e0e0e0;
+  --star-filled-hover: #fcb529;
+}
+
+/* hide radio buttons */
+
+input[name="star-rating"] {
+  display: inline-block;
+  width: 0;
+  opacity: 0;
+  margin-left: -2px;
+}
+
+/* set initial color to transparent so fill is empty*/
+
+.star {
+  color: var(--star-empty);
+  transition: color 0.2s ease-in-out;
+}
+
+/* set direction to row-reverse so 5th star is at the end and ~ can be used to fill all sibling stars that precede last starred element*/
+
+.star-container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: start;
+}
+
+.star-container label {
+  cursor: pointer;
+}
+
+.star-container svg {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+
+label:hover ~ label .star,
+svg.star:hover,
+input[name="star-rating"]:focus ~ label .star,
+input[name="star-rating"]:checked ~ label .star {
+  color: var(--star-filled);
+}
+
+label:hover ~ label .star,
+svg.star:hover,
+input[name="star-rating"]:focus ~ label .star:hover,
+input[name="star-rating"]:checked ~ label .star:hover {
+  color: var(--star-filled-hover);
+}
+
+input[name="star-rating"]:checked + label .star {
+  animation: starred 0.5s;
+}
+
+input[name="star-rating"]:checked + label {
+  animation: scale-up 1s;
+}
+
+@keyframes scale-up {
+  from {
+    transform: scale(1.2);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes starred {
+  from {
+    color: var(--star-filled-hover);
+  }
+  to {
+    color: var(--star-filled);
+  }
+}

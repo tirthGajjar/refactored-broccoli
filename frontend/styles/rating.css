@@ -1,0 +1,40 @@
+:root {
+  --star-filled: #fdce71;
+  --star-empty: #e0e0e0;
+}
+
+.rating svg {
+  width: 30px;
+  height: 30px;
+  color: var(--star-empty);
+}
+
+/* rating-0 */
+.rating-0 svg {
+  color: var(--star-empty);
+}
+
+/* rating-1 */
+.rating-1:nth-child(1n) :not(:nth-last-child(-n + 4)) {
+  color: var(--star-filled);
+}
+
+/* rating-2 */
+.rating-2:nth-child(1n) :not(:nth-last-child(-n + 3)) {
+  color: var(--star-filled);
+}
+
+/* rating-3 */
+.rating-3:nth-child(1n) :not(:nth-last-child(-n + 2)) {
+  color: var(--star-filled);
+}
+
+/* rating-4 */
+.rating-4:nth-child(1n) :not(:nth-last-child(-n + 1)) {
+  color: var(--star-filled);
+}
+
+/* rating-5 */
+.rating-5 svg {
+  color: var(--star-filled);
+}

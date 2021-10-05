@@ -1,0 +1,16 @@
+{
+  "name": "fronntend",
+  "version": "0.0.0",
+  "scripts": {
+    "vite": "vite",
+    "build": "vite build && yarn styles",
+    "serve": "vite preview",
+    "styles": "npx tailwindcss -o styles/tailwind.css",
+    "styles:watch": "npx tailwindcss -o styles/tailwind.css --watch",
+    "dev": "concurrently --kill-others \"yarn vite\" \"yarn styles:watch\""
+  },
+  "devDependencies": {
+    "concurrently": "^6.3.0",
+    "vite": "^2.6.0"
+  }
+}

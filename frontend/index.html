@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Commerce</title>
+    <link rel="stylesheet" href="styles/tailwind.css" />
+    <link rel="stylesheet" href="styles/rating.css" />
+    <link rel="stylesheet" href="styles/rating-input.css" />
+  </head>
+  <body class="bg-gray-200">
+    <div>
+      <main class="max-w-screen-lg mx-auto bg-white min-h-screen py-28">
+        <div class="my-2">
+          <div class="max-w-2xl mx-auto divide-y divide-y-[#B9B9B9]">
+            <div class="space-y-10 pb-16" id="product-overview">
+              <!-- PLACEHOLDER TO LOAD PRODUCT OVERVIEW -->
+            </div>
+            <div class="py-10">
+              <div class="text-heading-2 leading-2 font-bold mb-7">Reviews</div>
+              <div class="space-y-7" id="reviews-list">
+                <!-- PLACEHOLDER TO LOAD REVIEWS -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 30 30"
+        class="hidden"
+      >
+        <symbol id="star">
+          <g filter="url(#filter0_i)">
+            <path
+              fill="currentColor"
+              fill-rule="evenodd"
+              d="M30 11l-2-1-8-1-3-8-2-1-2 1-3 8-8 1-2 1 1 2 5 6-1 9 1 2h2l7-4 7 4a2 2 0 002 0l1-2-1-9 5-6 1-2z"
+              clip-rule="evenodd"
+            />
+          </g>
+
+          <defs>
+            <filter
+              id="filter0_i"
+              width="30"
+              height="30"
+              x="0"
+              y="0"
+              color-interpolation-filters="sRGB"
+              filterUnits="userSpaceOnUse"
+            >
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feBlend
+                in="SourceGraphic"
+                in2="BackgroundImageFix"
+                result="shape"
+              />
+              <feColorMatrix
+                in="SourceAlpha"
+                result="hardAlpha"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              />
+              <feOffset dy="-1" />
+              <feComposite
+                in2="hardAlpha"
+                k2="-1"
+                k3="1"
+                operator="arithmetic"
+              />
+              <feColorMatrix
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"
+              />
+              <feBlend in2="shape" result="effect1_innerShadow" />
+            </filter>
+          </defs>
+        </symbol>
+      </svg>
+      <section id="add-rating-modal" class="hidden">
+        <div
+          class="fixed z-10 inset-0 overflow-y-auto"
+          aria-labelledby="modal-title"
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            class="
+              flex
+              items-end
+              justify-center
+              min-h-screen
+              pt-4
+              px-4
+              pb-20
+              text-center
+              sm:block sm:p-0
+            "
+          >
+            <div
+              class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+              aria-hidden="true"
+            ></div>
+
+            <span
+              class="hidden sm:inline-block sm:align-middle sm:h-screen"
+              aria-hidden="true"
+              >&#8203;</span
+            >
+
+            <div
+              class="
+                inline-block
+                align-bottom
+                bg-white
+                rounded-lg
+                px-4
+                pt-5
+                pb-4
+                text-left
+                overflow-hidden
+                shadow-xl
+                transform
+                transition-all
+                sm:my-8 sm:align-middle sm:p-6
+                w-full
+                max-w-2xl
+                model-content
+              "
+            >
+              <div>
+                <div>
+                  <div class="flex justify-between space-x-4">
+                    <h3
+                      class="
+                        text-heading-1
+                        font-bold
+                        text-gray-900
+                        leading-heading-1
+                      "
+                      id="modal-title"
+                    >
+                      What’s your rating?
+                    </h3>
+                    <button
+                      type="button"
+                      class="
+                        bg-white
+                        rounded-md
+                        text-gray-400
+                        hover:text-gray-500
+                        h-6
+                        w-6
+                      "
+                      id="close-btn"
+                    >
+                      <span class="sr-only">Close</span>
+                      <svg
+                        class="h-6 w-6"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  <form class="mt-10 space-y-7">
+                    <div>
+                      <label class="block text-heading-2 leading-2 mb-8">
+                        Rating
+                      </label>
+                      <fieldset class="star-container">
+                        <legend class="sr-only">rating</legend>
+                        <div class="rating-css flex flex-row-reverse">
+                          <input
+                            type="radio"
+                            name="star-rating"
+                            value="5"
+                            id="five"
+                          />
+                          <label for="five">
+                            <svg class="star">
+                              <use xlink:href="#star" />
+                            </svg>
+                          </label>
+                          <input
+                            type="radio"
+                            name="star-rating"
+                            value="4"
+                            id="four"
+                          />
+                          <label for="four">
+                            <svg class="star">
+                              <use xlink:href="#star" />
+                            </svg>
+                          </label>
+                          <input
+                            type="radio"
+                            name="star-rating"
+                            value="3"
+                            id="three"
+                          />
+                          <label for="three">
+                            <svg class="star">
+                              <use xlink:href="#star" />
+                            </svg>
+                          </label>
+                          <input
+                            type="radio"
+                            name="star-rating"
+                            value="2"
+                            id="two"
+                          />
+                          <label for="two">
+                            <svg class="star">
+                              <use xlink:href="#star" />
+                            </svg>
+                          </label>
+                          <input
+                            type="radio"
+                            name="star-rating"
+                            value="1"
+                            id="one"
+                          />
+                          <label for="one">
+                            <svg class="star">
+                              <use xlink:href="#star" />
+                            </svg>
+                          </label>
+                        </div>
+                      </fieldset>
+                      <p
+                        class="mt-2 text-sm text-gray-500 hidden"
+                        role="alert"
+                        id="star-rating-error"
+                      ></p>
+                    </div>
+                    <div>
+                      <label class="block text-heading-2 leading-2 mb-8">
+                        Review
+                      </label>
+                      <textarea
+                        id="review-text"
+                        name="review-text"
+                        rows="3"
+                        maxlength="200"
+                        placeholder="start typing..."
+                        class="
+                          shadow-sm
+                          block
+                          w-full
+                          sm:text-sm
+                          border
+                          focus:border-gray-300 focus:outline-none
+                          rounded-md
+                          p-4
+                          max-w-xl
+                        "
+                      ></textarea>
+                      <p
+                        class="mt-2 text-sm text-gray-500 hidden"
+                        role="alert"
+                        id="review-text-error"
+                      ></p>
+                    </div>
+                    <div>
+                      <button
+                        class="
+                          px-4
+                          py-3.5
+                          w-36
+                          font-semibold
+                          leading-5
+                          text-secondary
+                          border border-solid border-[#ccc]
+                          rounded
+                          shadow-btn
+                          disabled:opacity-50
+                        "
+                        type="submit"
+                      >
+                        Submit review
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/fetcher.js"></script>
+    <script defer type="module" src="/js/modal.js"></script>
+    <script defer type="module" src="/js/form.js"></script>
+  </body>
+</html>
