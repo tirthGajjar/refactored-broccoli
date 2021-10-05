@@ -1,0 +1,85 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum UserStatus {
+  INVITED
+  ACTIVE
+  DELETED
+  BLOCKED
+}
+
+enum UserRole {
+  ADMIN
+  USER
+}
+
+model User {
+  id            String     @id @default(cuid())
+  email         String?    @unique
+  emailVerified DateTime?  @map("email_verified")
+  name          String?
+  image         String?
+  status        UserStatus @default(ACTIVE)
+  role          UserRole
+  createdAt     DateTime   @default(now()) @map("created_at")
+  updatedAt     DateTime   @updatedAt @map("updated_at")
+  reviews       Review[]
+
+  @@map("user")
+}
+
+model Product {
+  id        String            @id @default(cuid())
+  name      String
+  slug      String            @unique
+  reviews   Review[]
+  createdAt DateTime          @default(now()) @map("created_at")
+  updatedAt DateTime          @updatedAt @map("updated_at")
+  orders    ProductsInOrder[]
+}
+
+model Order {
+  id        String            @id @default(cuid())
+  createdAt DateTime          @default(now()) @map("created_at")
+  updatedAt DateTime          @updatedAt @map("updated_at")
+  products  ProductsInOrder[]
+}
+
+model ProductsInOrder {
+  id        String  @id
+  productId String
+  orderId   String
+  Product   Product @relation(fields: [productId], references: [id])
+  Order     Order   @relation(fields: [orderId], references: [id])
+}
+
+model Review {
+  id            String          @id @default(cuid())
+  productId     String
+  product       Product         @relation(fields: [productId], references: [id])
+  userId        String
+  user          User            @relation(fields: [userId], references: [id])
+  rating        Int
+  text          String
+  createdAt     DateTime        @default(now()) @map("created_at")
+  updatedAt     DateTime        @updatedAt @map("updated_at")
+  reviewHistory ReviewHistory[]
+}
+
+model ReviewHistory {
+  id            String   @id @default(cuid())
+  reviewId      String
+  rating        Int
+  text          String
+  updatedAt     DateTime @default(now()) @map("created_at")
+  currentReview Review   @relation(fields: [reviewId], references: [id])
+}

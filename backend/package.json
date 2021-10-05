@@ -1,0 +1,21 @@
+{
+  "name": "rest-express",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "@prisma/client": "3.1.1",
+    "cors": "^2.8.5",
+    "express": "4.17.1"
+  },
+  "devDependencies": {
+    "faker": "^5.5.3",
+    "nodemon": "^2.0.13",
+    "prisma": "3.1.1"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  }
+}
